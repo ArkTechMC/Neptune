@@ -1,0 +1,26 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.iafenvoy.neptune.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "BlockEntityTypeMixin",
+    "DamageSourcesAccessor",
+    "EntityMixin",
+    "EntityTrackerEntryMixin",
+    "LivingEntityMixin",
+    "MinecraftServerMixin",
+    "PlayerEntityMixin",
+    "PlayerInventoryMixin",
+    "PlayerManagerMixin",
+    "ServerEntityManagerMixin"
+  ],
+  "client": [
+    "ArmorFeatureRendererMixin",
+    "ClientWorldMixin",
+    "SkullBlockEntityRendererMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
