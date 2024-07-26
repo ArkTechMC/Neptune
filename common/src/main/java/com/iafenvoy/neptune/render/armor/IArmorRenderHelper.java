@@ -1,4 +1,4 @@
-package dev.rainimator.mod.renderer;
+package com.iafenvoy.neptune.render.armor;
 
 import net.minecraft.client.model.Model;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
@@ -12,7 +12,6 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.RotationAxis;
-
 
 public interface IArmorRenderHelper {
     // From net.fabricmc.fabric.api.client.rendering.v1.ArmorRenderer
