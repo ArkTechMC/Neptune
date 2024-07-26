@@ -4,8 +4,12 @@ import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.recipe.Ingredient;
 
+import java.util.Arrays;
+import java.util.function.Supplier;
+
 public class ToolMaterialUtil {
-    public static ToolMaterial of(int uses, float speed, float attackDamageBonus, int level, int enchantmentLevel, ItemConvertible... repairIngredients) {
+    @SafeVarargs
+    public static ToolMaterial of(int uses, float speed, float attackDamageBonus, int level, int enchantmentLevel, Supplier<ItemConvertible>... repairIngredients) {
         return new ToolMaterial() {
             @Override
             public int getDurability() {
@@ -34,7 +38,7 @@ public class ToolMaterialUtil {
 
             @Override
             public Ingredient getRepairIngredient() {
-                return Ingredient.ofItems(repairIngredients);
+                return Ingredient.ofItems(Arrays.stream(repairIngredients).map(Supplier::get).toArray(ItemConvertible[]::new));
             }
         };
     }
