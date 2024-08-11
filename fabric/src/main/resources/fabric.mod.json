@@ -9,7 +9,8 @@
     "IAFEnvoy"
   ],
   "contact": {
-    "source": "https://github.com/ArkTechMC/Neptune"
+    "sources": "https://github.com/ArkTechMC/Neptune",
+    "issues": "https://github.com/ArkTechMC/Neptune/issues"
   },
 
   "license": "LGPL 3.0",
