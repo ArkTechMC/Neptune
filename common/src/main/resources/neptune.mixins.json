@@ -10,6 +10,7 @@
     "EntityTrackerEntryMixin",
     "LivingEntityMixin",
     "MinecraftServerMixin",
+    "MobEntityAccessor",
     "PlayerEntityMixin",
     "PlayerInventoryMixin",
     "PlayerManagerMixin",

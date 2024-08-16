@@ -42,7 +42,7 @@ authors = "IAFEnvoy" #optional
 
 # The description text for the mod (multi line!) (#mandatory)
 description = '''
-My cross-platform utilities
+Animation Fan Work Engine
 '''
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
 [[dependencies.neptune]] #optional

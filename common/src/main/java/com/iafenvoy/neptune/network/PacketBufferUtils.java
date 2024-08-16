@@ -1,6 +1,7 @@
 package com.iafenvoy.neptune.network;
 
 import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.PacketByteBuf;
@@ -15,6 +16,10 @@ import java.nio.charset.StandardCharsets;
  * @since 1.0.0
  */
 public class PacketBufferUtils {
+    public static PacketByteBuf create() {
+        return new PacketByteBuf(Unpooled.buffer());
+    }
+
     /**
      * The number of bytes to write the supplied int using the 7 bit varint encoding.
      *

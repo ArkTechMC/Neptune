@@ -4,7 +4,7 @@
   "version": "${version}",
 
   "name": "Neptune",
-  "description": "My cross-platform utilities",
+  "description": "Animation Fan Work Engine",
   "authors": [
     "IAFEnvoy"
   ],
@@ -17,6 +17,22 @@
   "icon": "logo.jpg",
 
   "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.iafenvoy.neptune.fabric.NeptuneFabric"
+    ],
+    "client": [
+      "com.iafenvoy.neptune.fabric.NeptuneFabricClient"
+    ],
+    "cardinal-components-entity": [
+      "com.iafenvoy.neptune.fabric.component.ModComponentEntry"
+    ]
+  },
+  "custom": {
+    "cardinal-components": [
+      "neptune:fraction"
+    ]
+  },
   "mixins": [
     "neptune.mixins.json"
   ],
