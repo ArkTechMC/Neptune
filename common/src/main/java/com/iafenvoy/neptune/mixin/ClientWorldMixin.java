@@ -25,7 +25,7 @@ public abstract class ClientWorldMixin extends World {
 
     @Inject(method = "addEntity", at = @At("HEAD"), cancellable = true)
     public void onEntityJoin(int i, Entity entity, CallbackInfo ci) {
-        if (EntityEvents.ON_JOIN_WORLD.invoker().onJoinWorld(entity, (World) this))
+        if (EntityEvents.ON_JOIN_WORLD.invoker().onJoinWorld(entity, this))
             ci.cancel();
     }
 }
