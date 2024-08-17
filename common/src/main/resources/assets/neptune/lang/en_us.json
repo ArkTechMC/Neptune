@@ -1,4 +1,6 @@
 {
   "category.neptune": "Neptune (Animation Fan Work Engine)",
-  "key.neptune.fraction_ability": "Fraction Ability"
+  "key.neptune.fraction_ability": "Fraction Ability",
+  "command.neptune.fraction.success": "Success changed fraction to: ",
+  "fraction.neptune.none": "None"
 }

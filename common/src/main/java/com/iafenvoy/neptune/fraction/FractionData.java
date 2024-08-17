@@ -1,5 +1,7 @@
 package com.iafenvoy.neptune.fraction;
 
+import com.iafenvoy.neptune.impl.ComponentManager;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
 
 public class FractionData {
@@ -12,12 +14,12 @@ public class FractionData {
     }
 
     public void encode(NbtCompound tag) {
-        tag.putString("fraction", this.fraction.name());
+        tag.putString("fraction", this.fraction.id().toString());
         tag.putBoolean("abilityEnabled", this.abilityEnabled);
     }
 
     public void decode(NbtCompound tag) {
-        this.fraction = Fraction.getByName(tag.getString("fraction"));
+        this.fraction = Fraction.getById(tag.getString("fraction"));
         this.abilityEnabled = tag.getBoolean("abilityEnabled");
     }
 
@@ -35,5 +37,9 @@ public class FractionData {
 
     public void setAbilityEnabled(boolean abilityEnabled) {
         this.abilityEnabled = abilityEnabled;
+    }
+
+    public static FractionData byPlayer(PlayerEntity player) {
+        return ComponentManager.getFractionData(player);
     }
 }

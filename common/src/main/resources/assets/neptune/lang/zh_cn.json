@@ -1,4 +1,6 @@
 {
   "category.neptune": "Neptune （动画同人引擎）",
-  "key.neptune.fraction_ability": "阵营能力"
+  "key.neptune.fraction_ability": "阵营能力",
+  "command.neptune.fraction.success": "成功选择阵营：",
+  "fraction.neptune.none": "无阵营"
 }

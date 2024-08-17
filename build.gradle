@@ -42,6 +42,17 @@ allprojects {
             name = "Ladysnake Mods"
             url = 'https://maven.ladysnake.org/releases'
         }
+        exclusiveContent {
+            forRepository {
+                maven {
+                    name = "Modrinth"
+                    url = "https://api.modrinth.com/maven"
+                }
+            }
+            filter {
+                includeGroup "maven.modrinth"
+            }
+        }
     }
 
     tasks.withType(JavaCompile) {
