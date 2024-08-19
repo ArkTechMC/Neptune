@@ -5,6 +5,9 @@ import net.minecraft.entity.EntityGroup;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.network.listener.ClientPlayPacketListener;
+import net.minecraft.network.packet.Packet;
+import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket;
 import net.minecraft.world.World;
 
 public class StagedMonsterEntityBase extends MonsterEntityBase implements Stage.StagedEntity {
@@ -27,6 +30,17 @@ public class StagedMonsterEntityBase extends MonsterEntityBase implements Stage.
         super.writeNbt(nbt);
         nbt.putInt("stage", this.stage.getIndex());
         return nbt;
+    }
+
+    @Override
+    public Packet<ClientPlayPacketListener> createSpawnPacket() {
+        return new EntitySpawnS2CPacket(this, this.stage.ordinal());
+    }
+
+    @Override
+    public void onSpawnPacket(EntitySpawnS2CPacket packet) {
+        super.onSpawnPacket(packet);
+        this.stage = Stage.values()[packet.getEntityData()];
     }
 
     @Override
