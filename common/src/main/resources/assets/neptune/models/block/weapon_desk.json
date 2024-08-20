@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "minecraft:block/stone",
+    "east": "neptune:block/weapon_desk_side",
+    "north": "neptune:block/weapon_desk_side",
+    "particle": "neptune:block/weapon_desk_side",
+    "south": "neptune:block/weapon_desk_side",
+    "up": "neptune:block/weapon_desk_top",
+    "west": "neptune:block/weapon_desk_side"
+  }
+}

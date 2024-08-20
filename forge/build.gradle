@@ -28,6 +28,10 @@ dependencies {
     shadowCommon(project(path: ":common", configuration: "transformProductionForge")) { transitive = false }
 
     modImplementation "maven.modrinth:jupiter:PNEzF8F8"
+
+    // Optional
+    // EMI
+    modImplementation "dev.emi:emi-forge:${emi_version}"
 }
 
 processResources {

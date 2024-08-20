@@ -2,5 +2,7 @@
   "category.neptune": "Neptune （动画同人引擎）",
   "key.neptune.fraction_ability": "阵营能力",
   "command.neptune.fraction.success": "成功选择阵营：",
-  "fraction.neptune.none": "无阵营"
+  "fraction.neptune.none": "无阵营",
+  "gui.neptune.weapon_desk.title": "武器制作台",
+  "emi.category.neptune.weapon_desk": "武器制作台"
 }

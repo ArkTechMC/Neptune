@@ -39,19 +39,32 @@ allprojects {
         // See https://docs.gradle.org/current/userguide/declaring_repositories.html
         // for more information about repositories.
         maven {
-            name = "Ladysnake Mods"
+            name = "TerraformersMC"
+            url = "https://maven.terraformersmc.com/"
+        }
+        maven {
+            name = "Ladysnake Libs"
             url = 'https://maven.ladysnake.org/releases'
+        }
+        maven {
+            url = 'https://maven.blamejared.com'
+        }
+        maven {
+            name = "Illusive Soulworks maven"
+            url = "https://maven.theillusivec4.top/"
         }
         exclusiveContent {
             forRepository {
                 maven {
-                    name = "Modrinth"
-                    url = "https://api.modrinth.com/maven"
+                    url "https://cursemaven.com"
                 }
             }
             filter {
-                includeGroup "maven.modrinth"
+                includeGroup "curse.maven"
             }
+        }
+        maven {
+            url = "https://api.modrinth.com/maven"
         }
     }
 

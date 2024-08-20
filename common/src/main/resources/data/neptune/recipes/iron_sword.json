@@ -1,0 +1,14 @@
+{
+  "type": "neptune:weapon_desk",
+  "material": {
+    "item": "minecraft:iron_ingot",
+    "count": 2
+  },
+  "stick": {
+    "item": "minecraft:stick",
+    "count": 1
+  },
+  "result": {
+    "item": "minecraft:iron_sword"
+  }
+}

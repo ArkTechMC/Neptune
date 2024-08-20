@@ -10,6 +10,10 @@ dependencies {
     modApi "dev.architectury:architectury:${rootProject.architectury_version}"
 
     modImplementation "maven.modrinth:jupiter:MtP3aqMB"
+
+    // Optional
+    // EMI
+    modImplementation "dev.emi:emi-fabric:${emi_version}"
 }
 
 publishing {

@@ -1,0 +1,14 @@
+{
+  "type": "neptune:weapon_desk",
+  "material": {
+    "tag":"minecraft:planks",
+    "count": 2
+  },
+  "stick": {
+    "item": "minecraft:stick",
+    "count": 1
+  },
+  "result": {
+    "item": "minecraft:wooden_sword"
+  }
+}

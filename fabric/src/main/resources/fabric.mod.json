@@ -26,6 +26,9 @@
     ],
     "cardinal-components-entity": [
       "com.iafenvoy.neptune.fabric.component.ModComponentEntry"
+    ],
+    "emi": [
+      "com.iafenvoy.neptune.compat.emi.WeaponDeskRecipePlugin"
     ]
   },
   "custom": {
