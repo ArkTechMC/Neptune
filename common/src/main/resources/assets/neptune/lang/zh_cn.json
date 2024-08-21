@@ -4,5 +4,6 @@
   "command.neptune.fraction.success": "成功选择阵营：",
   "fraction.neptune.none": "无阵营",
   "gui.neptune.weapon_desk.title": "武器制作台",
-  "emi.category.neptune.weapon_desk": "武器制作台"
+  "emi.category.neptune.weapon_desk": "武器制作台",
+  "block.neptune.weapon_desk": "武器制作台"
 }

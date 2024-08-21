@@ -4,5 +4,6 @@
   "command.neptune.fraction.success": "Success changed fraction to: ",
   "fraction.neptune.none": "None",
   "gui.neptune.weapon_desk.title": "Weapon Desk",
-  "emi.category.neptune.weapon_desk": "Weapon Desk"
+  "emi.category.neptune.weapon_desk": "Weapon Desk",
+  "block.neptune.weapon_desk": "Weapon Desk"
 }
