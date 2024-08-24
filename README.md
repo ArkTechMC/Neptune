@@ -14,4 +14,12 @@ of `Architectury`
 
 3.A lot of functional interfaces
 
+4.A Weapon Desk which can craft tons of weapons. (Add recipe through datapack.)
+
+5.Fraction system
+
+6.(TODO) Various color of item glint
+
+7.(TODO) Common back/belt item with `Trinkets` and `Curios`
+
 And so on!
