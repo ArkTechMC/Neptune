@@ -24,8 +24,8 @@ public class GlintManager {
     public static final GlintHolder GREEN = new GlintHolder("green", new Identifier(Neptune.MOD_ID, "textures/misc/glint_item_green.png"));
     public static final GlintHolder PURPLE = new GlintHolder("purple", new Identifier(Neptune.MOD_ID, "textures/misc/glint_item_purple.png"));
     public static final GlintHolder WHITE = new GlintHolder("white", new Identifier(Neptune.MOD_ID, "textures/misc/glint_item_white.png"));
-    public static final GlintHolder PINK = new GlintHolder("purple", new Identifier(Neptune.MOD_ID, "textures/misc/glint_item_pink.png"));
-    public static final GlintHolder AQUA = new GlintHolder("white", new Identifier(Neptune.MOD_ID, "textures/misc/glint_item_aqua.png"));
+    public static final GlintHolder PINK = new GlintHolder("pink", new Identifier(Neptune.MOD_ID, "textures/misc/glint_item_pink.png"));
+    public static final GlintHolder AQUA = new GlintHolder("aqua", new Identifier(Neptune.MOD_ID, "textures/misc/glint_item_aqua.png"));
 
     public static void removeGlint(ItemStack stack) {
         stack.getOrCreateNbt().remove(GLINT_KEY);
