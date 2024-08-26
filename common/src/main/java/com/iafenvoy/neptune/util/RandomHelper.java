@@ -1,6 +1,8 @@
 package com.iafenvoy.neptune.util;
 
+import java.util.List;
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class RandomHelper {
     public static int nextInt(int min, int max) {
@@ -22,5 +24,17 @@ public class RandomHelper {
     public static double randomize(double origin, double ratio) {
         double range = Math.abs(origin * ratio);
         return origin + nextDouble(-range, range);
+    }
+
+    public static <T> T randomOne(Random random, List<T> list) {
+        return list.get(random.nextInt(list.size()));
+    }
+
+    public static <T> T randomOne(List<T> list) {
+        return randomOne(ThreadLocalRandom.current(), list);
+    }
+
+    public static <T> T randomOne(T[] list) {
+        return randomOne(List.of(list));
     }
 }

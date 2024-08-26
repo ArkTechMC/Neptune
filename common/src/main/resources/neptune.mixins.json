@@ -19,7 +19,9 @@
   "client": [
     "ArmorFeatureRendererMixin",
     "BossBarHudMixin",
+    "BufferBuilderStorageMixin",
     "ClientWorldMixin",
+    "ItemRendererMixin",
     "SkullBlockEntityRendererMixin"
   ],
   "injectors": {

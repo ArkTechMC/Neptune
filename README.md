@@ -18,7 +18,7 @@ of `Architectury`
 
 5.Fraction system
 
-6.(TODO) Various color of item glint
+6.Various color of item glint
 
 7.(TODO) Common back/belt item with `Trinkets` and `Curios`
 
