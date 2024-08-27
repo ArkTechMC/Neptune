@@ -20,6 +20,6 @@ of `Architectury`
 
 6.Various color of item glint
 
-7.(TODO) Common back/belt item with `Trinkets` and `Curios`
+7.Common back/belt item with `Trinkets` and `Curios`
 
 And so on!
