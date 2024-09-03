@@ -28,9 +28,10 @@ public class GlintManager {
     public static final GlintHolder PINK = new GlintHolder("pink", new Identifier(Neptune.MOD_ID, "textures/misc/glint_item_pink.png"), Formatting.LIGHT_PURPLE);
     public static final GlintHolder AQUA = new GlintHolder("aqua", new Identifier(Neptune.MOD_ID, "textures/misc/glint_item_aqua.png"), Formatting.AQUA);
 
-    public static void removeGlint(ItemStack stack) {
+    public static ItemStack removeGlint(ItemStack stack) {
         stack.getOrCreateNbt().remove(GLINT_KEY);
         stack.getOrCreateNbt().remove(GLINT_ALWAYS_KEY);
+        return stack;
     }
 
     public record GlintHolder(String id, Identifier texture, Formatting textColor, PredicateHolder predicates) {
@@ -40,9 +41,10 @@ public class GlintManager {
             BY_ID.put(this.id, this);
         }
 
-        public void apply(ItemStack stack, boolean always) {
+        public ItemStack apply(ItemStack stack, boolean always) {
             stack.getOrCreateNbt().putString(GLINT_KEY, this.id);
             stack.getOrCreateNbt().putBoolean(GLINT_ALWAYS_KEY, always);
+            return stack;
         }
 
         public void addPredicate(Predicate<ItemStack> stackPredicate) {
