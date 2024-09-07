@@ -67,6 +67,9 @@ allprojects {
             url = "https://api.modrinth.com/maven"
         }
         maven { url = "https://mvn.devos.one/releases/" }
+        flatDir {
+            dir "./flatDir"
+        }
     }
 
     tasks.withType(JavaCompile) {

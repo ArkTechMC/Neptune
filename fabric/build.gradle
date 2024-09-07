@@ -27,6 +27,7 @@ dependencies {
     modApi(include("dev.onyxstudios.cardinal-components-api:cardinal-components-base:${project.cca_version}"))
     modApi(include("dev.onyxstudios.cardinal-components-api:cardinal-components-entity:${project.cca_version}"))
     modImplementation(include("io.github.fabricators_of_create.Porting-Lib:obj_loader:2.3.4+1.20.1"))
+    modImplementation(include("com.iafenvoy.sponsor:sponsor_core:1.0.0-fabric"))
 
     modApi "maven.modrinth:jupiter:MtP3aqMB"
 
