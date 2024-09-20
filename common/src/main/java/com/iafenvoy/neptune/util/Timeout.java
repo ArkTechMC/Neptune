@@ -36,6 +36,7 @@ public class Timeout {
     public void tick(MinecraftServer server) {
         this.ticks++;
         if (this.ticks >= this.waitTicks) {
+            this.ticks -= this.waitTicks;
             server.execute(this.callback);
             this.currentTimes++;
             if (this.currentTimes >= this.maxTimes)

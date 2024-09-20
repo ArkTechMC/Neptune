@@ -22,7 +22,10 @@ public class RandomHelper {
     }
 
     public static double randomize(double origin, double ratio) {
-        double range = Math.abs(origin * ratio);
+        return rangeRand(origin, Math.abs(origin * ratio));
+    }
+
+    public static double rangeRand(double origin, double range) {
         return origin + nextDouble(-range, range);
     }
 
