@@ -7,6 +7,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.Rarity;
 import net.minecraft.world.World;
 
+import java.util.UUID;
 import java.util.function.Function;
 
 public class ItemBase extends Item implements ISwingable {
@@ -24,5 +25,11 @@ public class ItemBase extends Item implements ISwingable {
 
     public boolean onSwingHand(ItemStack itemtack, World world, double x, double y, double z) {
         return false;
+    }
+
+    public static UUID processUuid(UUID origin) {
+        if (origin.equals(ATTACK_DAMAGE_MODIFIER_ID)) return ATTACK_DAMAGE_MODIFIER_ID;
+        if (origin.equals(ATTACK_SPEED_MODIFIER_ID)) return ATTACK_SPEED_MODIFIER_ID;
+        return origin;
     }
 }
