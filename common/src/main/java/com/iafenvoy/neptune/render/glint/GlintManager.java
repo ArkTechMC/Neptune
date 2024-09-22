@@ -34,9 +34,11 @@ public class GlintManager {
         return stack;
     }
 
-    public record GlintHolder(String id, Identifier texture, Formatting textColor, PredicateHolder predicates) {
+    public record GlintHolder(String id, Identifier texture, Formatting textColor) {
         public GlintHolder(String id, Identifier texture, Formatting textColor) {
-            this(id, texture, textColor, new PredicateHolder());
+            this.id = id;
+            this.texture = texture;
+            this.textColor = textColor;
             HOLDERS.add(this);
             BY_ID.put(this.id, this);
         }
@@ -45,29 +47,6 @@ public class GlintManager {
             stack.getOrCreateNbt().putString(GLINT_KEY, this.id);
             stack.getOrCreateNbt().putBoolean(GLINT_ALWAYS_KEY, always);
             return stack;
-        }
-
-        public void addPredicate(Predicate<ItemStack> stackPredicate) {
-            this.predicates.add(stackPredicate);
-        }
-
-        public boolean match(ItemStack stack) {
-            return this.predicates.test(stack);
-        }
-    }
-
-    private static class PredicateHolder {
-        private final List<Predicate<ItemStack>> predicates = new ArrayList<>();
-
-        public void add(Predicate<ItemStack> stackPredicate) {
-            this.predicates.add(stackPredicate);
-        }
-
-        public boolean test(ItemStack stack) {
-            for (Predicate<ItemStack> stackPredicate : this.predicates)
-                if (stackPredicate.test(stack))
-                    return true;
-            return false;
         }
     }
 }

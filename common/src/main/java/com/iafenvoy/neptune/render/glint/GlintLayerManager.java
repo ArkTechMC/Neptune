@@ -1,9 +1,13 @@
 package com.iafenvoy.neptune.render.glint;
 
+import com.mojang.blaze3d.systems.RenderSystem;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.gl.ShaderProgram;
 import net.minecraft.client.render.*;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NbtElement;
 import org.jetbrains.annotations.ApiStatus;
 
 import java.util.HashMap;
@@ -24,6 +28,7 @@ public class GlintLayerManager {
                     256,
                     RenderLayer.MultiPhaseParameters.builder().program(RenderPhase.DIRECT_GLINT_PROGRAM)
                             .texture(new RenderPhase.Texture(holder.texture(), true, false))
+                            .writeMaskState(RenderPhase.COLOR_MASK)
                             .cull(RenderPhase.DISABLE_CULLING)
                             .depthTest(RenderPhase.EQUAL_DEPTH_TEST)
                             .transparency(RenderPhase.GLINT_TRANSPARENCY)
@@ -34,16 +39,31 @@ public class GlintLayerManager {
         }
     }
 
-    public static VertexConsumer getConsumerById(VertexConsumerProvider provider, RenderLayer layer, boolean glint, String id) {
-        if (glint)
-            return VertexConsumers.union(provider.getBuffer(LAYERS.getOrDefault(GlintManager.BY_ID.getOrDefault(id, GlintManager.DEFAULT), RenderLayer.getDirectGlint())), provider.getBuffer(layer));
-        else return provider.getBuffer(layer);
+    public static RenderLayer processLayer(RenderLayer original, ItemStack stack){
+        RenderSystem.setShader(GameRenderer::getParticleProgram);
+        if (!stack.isEmpty() && stack.getNbt() != null && stack.getNbt().contains(GlintManager.GLINT_KEY, NbtElement.STRING_TYPE)) {
+            String id = stack.getOrCreateNbt().getString(GlintManager.GLINT_KEY);
+            return LAYERS.getOrDefault(
+                    GlintManager.BY_ID.getOrDefault(id, GlintManager.DEFAULT),
+                    RenderLayer.getDirectGlint()
+            );
+        }
+        return original;
     }
 
-    public static VertexConsumer getConsumerByStack(VertexConsumerProvider provider, RenderLayer layer, ItemStack stack, boolean glint) {
-        for (GlintManager.GlintHolder holder : GlintManager.HOLDERS)
-            if (holder.match(stack))
-                return VertexConsumers.union(provider.getBuffer(LAYERS.getOrDefault(holder, RenderLayer.getDirectGlint())), provider.getBuffer(layer));
+    public static VertexConsumer process(VertexConsumerProvider provider, RenderLayer layer, boolean glint, ItemStack stack){
+        if (!stack.isEmpty() && stack.getNbt() != null && stack.getNbt().contains(GlintManager.GLINT_KEY, NbtElement.STRING_TYPE)) {
+            String id = stack.getOrCreateNbt().getString(GlintManager.GLINT_KEY);
+            if (glint || stack.getNbt().getBoolean(GlintManager.GLINT_ALWAYS_KEY))
+                return VertexConsumers.union(
+                        provider.getBuffer(
+                                LAYERS.getOrDefault(
+                                        GlintManager.BY_ID.getOrDefault(id, GlintManager.DEFAULT),
+                                        RenderLayer.getDirectGlint())
+                        ), provider.getBuffer(layer)
+                );
+            else return provider.getBuffer(layer);
+        }
         if (glint)
             return VertexConsumers.union(provider.getBuffer(RenderLayer.getDirectGlint()), provider.getBuffer(layer));
         return provider.getBuffer(layer);
