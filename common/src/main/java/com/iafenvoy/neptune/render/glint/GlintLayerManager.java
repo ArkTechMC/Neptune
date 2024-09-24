@@ -39,18 +39,6 @@ public class GlintLayerManager {
         }
     }
 
-    public static RenderLayer processLayer(RenderLayer original, ItemStack stack){
-        RenderSystem.setShader(GameRenderer::getParticleProgram);
-        if (!stack.isEmpty() && stack.getNbt() != null && stack.getNbt().contains(GlintManager.GLINT_KEY, NbtElement.STRING_TYPE)) {
-            String id = stack.getOrCreateNbt().getString(GlintManager.GLINT_KEY);
-            return LAYERS.getOrDefault(
-                    GlintManager.BY_ID.getOrDefault(id, GlintManager.DEFAULT),
-                    RenderLayer.getDirectGlint()
-            );
-        }
-        return original;
-    }
-
     public static VertexConsumer process(VertexConsumerProvider provider, RenderLayer layer, boolean glint, ItemStack stack){
         if (!stack.isEmpty() && stack.getNbt() != null && stack.getNbt().contains(GlintManager.GLINT_KEY, NbtElement.STRING_TYPE)) {
             String id = stack.getOrCreateNbt().getString(GlintManager.GLINT_KEY);
