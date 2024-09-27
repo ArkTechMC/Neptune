@@ -6,9 +6,9 @@
   "mixins": [
     "BlockEntityTypeMixin",
     "DamageSourcesAccessor",
+    "EntityAttributeModifierMixin",
     "EntityMixin",
     "EntityTrackerEntryMixin",
-    "ItemStackMixin",
     "LivingEntityMixin",
     "MinecraftServerMixin",
     "MobEntityAccessor",
