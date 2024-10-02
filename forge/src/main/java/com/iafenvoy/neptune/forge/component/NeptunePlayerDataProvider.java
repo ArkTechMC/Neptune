@@ -10,11 +10,11 @@ import net.minecraftforge.common.util.LazyOptional;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class FractionDataProvider implements ICapabilitySerializable<NbtCompound> {
-    public static final Capability<FractionDataStorage> CAPABILITY = CapabilityManager.get(new CapabilityToken<>() {
+public class NeptunePlayerDataProvider implements ICapabilitySerializable<NbtCompound> {
+    public static final Capability<NeptunePlayerDataStorage> CAPABILITY = CapabilityManager.get(new CapabilityToken<>() {
     });
-    private FractionDataStorage storage;
-    private final LazyOptional<FractionDataStorage> storageLazyOptional = LazyOptional.of(this::getOrCreateStorage);
+    private NeptunePlayerDataStorage storage;
+    private final LazyOptional<NeptunePlayerDataStorage> storageLazyOptional = LazyOptional.of(this::getOrCreateStorage);
 
     @Override
     public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> capability, @Nullable Direction arg) {
@@ -31,9 +31,9 @@ public class FractionDataProvider implements ICapabilitySerializable<NbtCompound
         this.getOrCreateStorage().deserializeNBT(arg);
     }
 
-    private FractionDataStorage getOrCreateStorage() {
+    private NeptunePlayerDataStorage getOrCreateStorage() {
         if (this.storage == null)
-            this.storage = new FractionDataStorage();
+            this.storage = new NeptunePlayerDataStorage();
         return this.storage;
     }
 }

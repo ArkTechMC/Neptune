@@ -1,15 +1,16 @@
 package com.iafenvoy.neptune.forge.component;
 
-import com.iafenvoy.neptune.fraction.FractionData;
+import com.iafenvoy.neptune.data.NeptunePlayerData;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraftforge.common.capabilities.AutoRegisterCapability;
 import net.minecraftforge.common.util.INBTSerializable;
 
 @AutoRegisterCapability
-public class FractionDataStorage implements INBTSerializable<NbtCompound> {
-    private final FractionData playerData = new FractionData();
+public class NeptunePlayerDataStorage implements INBTSerializable<NbtCompound> {
+    private final NeptunePlayerData playerData = new NeptunePlayerData(() -> {
+    });
 
-    public FractionDataStorage() {
+    public NeptunePlayerDataStorage() {
     }
 
     @Override
@@ -24,7 +25,7 @@ public class FractionDataStorage implements INBTSerializable<NbtCompound> {
         this.playerData.decode(compound);
     }
 
-    public FractionData getPlayerData() {
+    public NeptunePlayerData getPlayerData() {
         return this.playerData;
     }
 }

@@ -19,7 +19,7 @@ public interface FractionEntity {
         }));
         goalSelector.add(1, new ActiveTargetGoal<>(entity, PlayerEntity.class, true, mob -> {
             if (mob instanceof PlayerEntity player)
-                return ComponentManager.getFractionData(player).getFraction() != entity.getFraction();
+                return ComponentManager.getPlayerData(player).getFraction() != entity.getFraction();
             return false;
         }));
     }

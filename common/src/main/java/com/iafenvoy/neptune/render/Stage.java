@@ -5,6 +5,8 @@ import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.util.Identifier;
 
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 public enum Stage {
     Zero(0),
@@ -61,7 +63,7 @@ public enum Stage {
         }
 
         public Identifier getTexture(Stage stage) {
-            return new Identifier(this.modId, "textures/entities/" + this.getTextureId(stage) + ".png");
+            return buildTexture(this.modId, this.getTextureId(stage));
         }
 
         private String getTextureId(Stage stage) {
@@ -76,6 +78,10 @@ public enum Stage {
             if (this.eyeTextureId == null)
                 return new EntityRendererBase<>(context, this, null);
             return new EntityRendererBase<>(context, this, new Identifier(this.modId, this.eyeTextureId));
+        }
+
+        private static Identifier buildTexture(String modId, String id) {
+            return new Identifier(modId, "textures/entities/" + id + ".png");
         }
     }
 }

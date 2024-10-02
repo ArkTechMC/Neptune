@@ -7,6 +7,6 @@ import dev.onyxstudios.cca.api.v3.entity.RespawnCopyStrategy;
 public class ModComponentEntry implements EntityComponentInitializer {
     @Override
     public void registerEntityComponentFactories(EntityComponentFactoryRegistry registry) {
-        registry.registerForPlayers(FractionComponent.FRACTION_COMPONENT, FractionComponent::new, RespawnCopyStrategy.INVENTORY);
+        registry.registerForPlayers(NeptunePlayerComponent.NEPTUNE_PLAYER_COMPONENT, NeptunePlayerComponent::new, RespawnCopyStrategy.INVENTORY);
     }
 }

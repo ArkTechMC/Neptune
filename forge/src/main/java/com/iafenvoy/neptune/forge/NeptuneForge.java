@@ -2,8 +2,9 @@ package com.iafenvoy.neptune.forge;
 
 import com.iafenvoy.neptune.Neptune;
 import com.iafenvoy.neptune.NeptuneClient;
-import com.iafenvoy.neptune.forge.component.FractionDataProvider;
-import com.iafenvoy.neptune.fraction.FractionCommand;
+import com.iafenvoy.neptune.command.FractionCommand;
+import com.iafenvoy.neptune.command.SkinCommand;
+import com.iafenvoy.neptune.forge.component.NeptunePlayerDataProvider;
 import dev.architectury.platform.Platform;
 import dev.architectury.platform.forge.EventBuses;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
@@ -41,14 +42,15 @@ public class NeptuneForge {
         @SubscribeEvent
         public static void registerCommand(RegisterCommandsEvent event) {
             event.getDispatcher().register(FractionCommand.FRACTION_COMMAND);
+            event.getDispatcher().register(SkinCommand.SKIN_COMMAND);
         }
 
         @SubscribeEvent
         public static void attachEntityCapabilities(AttachCapabilitiesEvent<Entity> event) {
             if (event.getObject() instanceof PlayerEntity player) {
                 boolean isServerNotFake = player instanceof ServerPlayerEntity && !(player instanceof FakePlayer);
-                if ((isServerNotFake || player instanceof AbstractClientPlayerEntity) && !player.getCapability(FractionDataProvider.CAPABILITY).isPresent())
-                    event.addCapability(new Identifier(Neptune.MOD_ID, "fraction"), new FractionDataProvider());
+                if ((isServerNotFake || player instanceof AbstractClientPlayerEntity) && !player.getCapability(NeptunePlayerDataProvider.CAPABILITY).isPresent())
+                    event.addCapability(new Identifier(Neptune.MOD_ID, "player_data"), new NeptunePlayerDataProvider());
             }
         }
     }

@@ -33,7 +33,7 @@
   },
   "custom": {
     "cardinal-components": [
-      "neptune:fraction"
+      "neptune:player_data"
     ]
   },
   "mixins": [

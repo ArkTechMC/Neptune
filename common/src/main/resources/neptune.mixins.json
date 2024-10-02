@@ -18,6 +18,7 @@
     "ServerEntityManagerMixin"
   ],
   "client": [
+    "AbstractClientPlayerEntityMixin",
     "ArmorFeatureRendererMixin",
     "BossBarHudMixin",
     "BufferBuilderStorageMixin",
