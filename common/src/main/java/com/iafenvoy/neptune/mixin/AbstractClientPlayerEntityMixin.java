@@ -26,7 +26,7 @@ public abstract class AbstractClientPlayerEntityMixin extends PlayerEntity {
     @Inject(method = "getSkinTexture", at = @At("HEAD"), cancellable = true)
     private void handleCustomSkin(CallbackInfoReturnable<Identifier> cir) {
         NeptunePlayerData data = NeptunePlayerData.byPlayer(this);
-        if (data.getUsingTexture() != null && MinecraftClient.getInstance().getTextureManager().getOrDefault(data.getUsingTexture(), MissingSprite.getMissingSpriteTexture()) != MissingSprite.getMissingSpriteTexture())
+        if (data != null && data.getUsingTexture() != null && MinecraftClient.getInstance().getTextureManager().getOrDefault(data.getUsingTexture(), MissingSprite.getMissingSpriteTexture()) != MissingSprite.getMissingSpriteTexture())
             cir.setReturnValue(data.getUsingTexture());
     }
 }
