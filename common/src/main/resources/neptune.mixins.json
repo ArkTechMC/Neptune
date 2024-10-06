@@ -23,6 +23,7 @@
     "BossBarHudMixin",
     "BufferBuilderStorageMixin",
     "ClientWorldMixin",
+    "HeadFeatureRendererMixin",
     "ItemRendererMixin",
     "PlayerEntityRendererMixin",
     "SkullBlockEntityRendererMixin"

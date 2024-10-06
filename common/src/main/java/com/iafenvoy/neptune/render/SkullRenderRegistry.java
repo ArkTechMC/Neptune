@@ -10,6 +10,7 @@ import net.minecraft.client.render.entity.model.EntityModelLoader;
 import net.minecraft.client.render.entity.model.SkullEntityModel;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.ApiStatus;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +30,11 @@ public class SkullRenderRegistry {
 
     public static void register(SkullBlock.SkullType type, Identifier texture, SkullBlockEntityModel model, Block... blocks) {
         SKULL_INFO_WITH_MODEL.add(new SkullInfoWithModel(type, texture, model, List.of(blocks)));
+    }
+
+    @Nullable
+    public static Identifier getTextureFromType(SkullBlock.SkullType type) {
+        return SKULL_INFO_WITH_MODEL.stream().filter(x -> x.type == type).findFirst().map(x -> x.texture).orElse(SKULL_INFO_WITH_LAYER.stream().filter(x -> x.type == type).findFirst().map(x -> x.texture).orElse(null));
     }
 
     @ApiStatus.Internal
