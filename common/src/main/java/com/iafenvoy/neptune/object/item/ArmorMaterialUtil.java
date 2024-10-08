@@ -14,6 +14,7 @@ import java.util.EnumMap;
 import java.util.function.Supplier;
 
 public class ArmorMaterialUtil {
+    @SafeVarargs
     public static ArmorMaterial of(String name, int[] baseDurability, int durabilityMul, int[] protection, int enchantAbility, SoundEvent equipSound, float toughness, float knockBackResistance, Supplier<ItemConvertible>... repairIngredients) {
         return of(name, Util.make(new EnumMap<>(ArmorItem.Type.class), (map) -> {
             map.put(ArmorItem.Type.HELMET, baseDurability[3]);
@@ -28,6 +29,7 @@ public class ArmorMaterialUtil {
         }), enchantAbility, equipSound, toughness, knockBackResistance, repairIngredients);
     }
 
+    @SafeVarargs
     public static ArmorMaterial of(String name, EnumMap<ArmorItem.Type, Integer> baseDurability, int durabilityMul, EnumMap<ArmorItem.Type, Integer> protection, int enchantAbility, SoundEvent equipSound, float toughness, float knockBackResistance, Supplier<ItemConvertible>... repairIngredients) {
         if (equipSound == null) equipSound = Registries.SOUND_EVENT.get(new Identifier(""));
         SoundEvent finalEquipSound = equipSound;

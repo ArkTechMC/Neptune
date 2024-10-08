@@ -1,6 +1,5 @@
 package com.iafenvoy.neptune.mixin;
 
-import com.iafenvoy.neptune.data.NeptunePlayerData;
 import com.iafenvoy.neptune.render.SkullRenderRegistry;
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.minecraft.MinecraftProfileTexture;
@@ -10,7 +9,6 @@ import net.minecraft.block.AbstractSkullBlock;
 import net.minecraft.block.SkullBlock;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
-import net.minecraft.client.texture.MissingSprite;
 import net.minecraft.client.texture.PlayerSkinProvider;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.player.PlayerEntity;

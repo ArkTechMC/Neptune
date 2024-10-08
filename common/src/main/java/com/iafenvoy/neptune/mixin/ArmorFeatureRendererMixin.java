@@ -4,9 +4,6 @@ import com.iafenvoy.neptune.render.armor.IArmorRendererBase;
 import com.iafenvoy.neptune.render.armor.IArmorTextureProvider;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.client.render.OverlayTexture;
-import net.minecraft.client.render.RenderLayer;
-import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.feature.ArmorFeatureRenderer;
 import net.minecraft.client.render.entity.feature.FeatureRenderer;
@@ -40,12 +37,10 @@ public abstract class ArmorFeatureRendererMixin<T extends LivingEntity, M extend
     @Inject(method = "renderArmor", at = @At("HEAD"), cancellable = true)
     private void onRenderArmor(MatrixStack matrices, VertexConsumerProvider vertexConsumers, T entity, EquipmentSlot armorSlot, int light, A model, CallbackInfo ci) {
         ItemStack stack = entity.getEquippedStack(armorSlot);
+        @SuppressWarnings("unchecked")
         IArmorRendererBase<T> renderer = (IArmorRendererBase<T>) IArmorRendererBase.RENDERERS.get(stack.getItem());
         if (renderer != null) {
-            BipedEntityModel<T> armorModel=renderer.getHumanoidArmorModel(entity, stack, armorSlot, this.getContextModel());
-            this.getContextModel().copyBipedStateTo(armorModel);
-            VertexConsumer consumer = vertexConsumers.getBuffer(RenderLayer.getArmorCutoutNoCull(renderer.getArmorTexture(stack, entity, armorSlot)));
-            armorModel.render(matrices, consumer, light, OverlayTexture.DEFAULT_UV, 1, 1, 1, 1);
+            renderer.render(matrices, vertexConsumers, entity, armorSlot, light, stack, model);
             ci.cancel();
         }
     }

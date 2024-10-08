@@ -5,8 +5,6 @@ import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.util.Identifier;
 
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Set;
 
 public enum Stage {
     Zero(0),

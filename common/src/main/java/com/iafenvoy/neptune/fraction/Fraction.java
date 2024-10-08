@@ -14,17 +14,22 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public record Fraction(Identifier id, Supplier<ItemStack> banner,
-                       Consumer2<PacketByteBuf, PlayerEntity> abilityHandler) {
+public record Fraction(Identifier id, Supplier<ItemStack> banner, Consumer2<PacketByteBuf, PlayerEntity> abilityHandler,
+                       List<String> origins) {
     private static final List<Fraction> VALUES = new ArrayList<>();
     private static final Map<Identifier, Fraction> BY_NAME = new HashMap<>();
     public static final Fraction NONE = new Fraction(new Identifier(Neptune.MOD_ID, "none"), () -> new ItemStack(Items.WHITE_BANNER), (buf, player) -> {
     });
 
-    public Fraction(Identifier id, Supplier<ItemStack> banner, Consumer2<PacketByteBuf, PlayerEntity> abilityHandler) {
+    public Fraction(Identifier id, Supplier<ItemStack> banner, Consumer2<PacketByteBuf, PlayerEntity> abilityHandler, String... origins) {
+        this(id, banner, abilityHandler, List.of(origins));
+    }
+
+    public Fraction(Identifier id, Supplier<ItemStack> banner, Consumer2<PacketByteBuf, PlayerEntity> abilityHandler, List<String> origins) {
         this.id = id;
         this.banner = banner;
         this.abilityHandler = abilityHandler;
+        this.origins = origins;
         VALUES.add(this);
         BY_NAME.put(id, this);
     }

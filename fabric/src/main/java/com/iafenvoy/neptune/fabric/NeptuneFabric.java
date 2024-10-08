@@ -10,8 +10,6 @@ public class NeptuneFabric implements ModInitializer {
     public void onInitialize() {
         Neptune.init();
         Neptune.process();
-        CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {
-            dispatcher.register(FractionCommand.FRACTION_COMMAND);
-        });
+        CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> dispatcher.register(FractionCommand.FRACTION_COMMAND));
     }
 }

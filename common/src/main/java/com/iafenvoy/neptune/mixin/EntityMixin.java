@@ -17,9 +17,10 @@ public abstract class EntityMixin {
     @Shadow
     public abstract World getWorld();
 
+    @SuppressWarnings("all")
     @Inject(method = "dropStack(Lnet/minecraft/item/ItemStack;F)Lnet/minecraft/entity/ItemEntity;", at = @At("HEAD"))
     private void onDropItem(ItemStack stack, float yOffset, CallbackInfoReturnable<ItemEntity> cir) {
-        if (stack.getItem() instanceof ItemBase itemBase && (Entity) (Object) this instanceof PlayerEntity player)
+        if (stack.getItem() instanceof ItemBase itemBase && (Object) this instanceof PlayerEntity player)
             itemBase.onDroppedByPlayer(stack, player);
     }
 }
