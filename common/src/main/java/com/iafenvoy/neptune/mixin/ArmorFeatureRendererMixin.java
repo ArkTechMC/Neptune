@@ -40,7 +40,7 @@ public abstract class ArmorFeatureRendererMixin<T extends LivingEntity, M extend
         @SuppressWarnings("unchecked")
         IArmorRendererBase<T> renderer = (IArmorRendererBase<T>) IArmorRendererBase.RENDERERS.get(stack.getItem());
         if (renderer != null) {
-            renderer.render(matrices, vertexConsumers, entity, armorSlot, light, stack, model);
+            renderer.render(matrices, vertexConsumers, entity, armorSlot, light, stack, this.getContextModel());
             ci.cancel();
         }
     }
