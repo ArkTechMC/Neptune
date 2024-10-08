@@ -3,7 +3,6 @@ package com.iafenvoy.neptune.forge;
 import com.iafenvoy.neptune.Neptune;
 import com.iafenvoy.neptune.NeptuneClient;
 import com.iafenvoy.neptune.command.FractionCommand;
-import com.iafenvoy.neptune.command.SkinCommand;
 import com.iafenvoy.neptune.forge.component.NeptunePlayerDataProvider;
 import dev.architectury.platform.Platform;
 import dev.architectury.platform.forge.EventBuses;
@@ -42,7 +41,6 @@ public class NeptuneForge {
         @SubscribeEvent
         public static void registerCommand(RegisterCommandsEvent event) {
             event.getDispatcher().register(FractionCommand.FRACTION_COMMAND);
-            event.getDispatcher().register(SkinCommand.SKIN_COMMAND);
         }
 
         @SubscribeEvent

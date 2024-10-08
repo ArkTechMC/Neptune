@@ -12,6 +12,7 @@ public class NeptunePlayerData {
     private Fraction fraction;
     private boolean abilityEnabled;
     @Nullable
+    @Deprecated
     private Identifier usingTexture = null;
 
     public NeptunePlayerData(Runnable sync) {
@@ -47,15 +48,6 @@ public class NeptunePlayerData {
 
     public void setAbilityEnabled(boolean abilityEnabled) {
         this.abilityEnabled = abilityEnabled;
-        this.sync.run();
-    }
-
-    public @Nullable Identifier getUsingTexture() {
-        return this.usingTexture;
-    }
-
-    public void setUsingTexture(@Nullable Identifier usingTexture) {
-        this.usingTexture = usingTexture;
         this.sync.run();
     }
 
