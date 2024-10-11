@@ -6,7 +6,7 @@ import net.minecraftforge.common.capabilities.AutoRegisterCapability;
 import net.minecraftforge.common.util.INBTSerializable;
 
 @AutoRegisterCapability
-public class NeptunePlayerDataStorage implements INBTSerializable<NbtCompound> {
+public class NeptunePlayerDataStorage implements ITickableCapability {
     private final NeptunePlayerData playerData = new NeptunePlayerData(() -> {
     });
 
@@ -27,5 +27,15 @@ public class NeptunePlayerDataStorage implements INBTSerializable<NbtCompound> {
 
     public NeptunePlayerData getPlayerData() {
         return this.playerData;
+    }
+
+    @Override
+    public void tick() {
+
+    }
+
+    @Override
+    public boolean isDirty() {
+        return false;
     }
 }
