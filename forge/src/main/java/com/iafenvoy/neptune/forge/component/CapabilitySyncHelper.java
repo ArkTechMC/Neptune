@@ -4,7 +4,6 @@ import com.iafenvoy.neptune.Neptune;
 import com.iafenvoy.neptune.network.PacketBufferUtils;
 import dev.architectury.networking.NetworkManager;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.network.AbstractClientPlayerEntity;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -16,7 +15,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
-import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
@@ -44,13 +42,10 @@ public class CapabilitySyncHelper {
 
     @SubscribeEvent
     public static void attachCapability(AttachCapabilitiesEvent<Entity> event) {
-        if (event.getObject() instanceof PlayerEntity player) {
-            boolean isServerNotFake = player instanceof ServerPlayerEntity && !(player instanceof FakePlayer);
-            if ((isServerNotFake || player instanceof AbstractClientPlayerEntity))
-                for (CapabilityHolder<?, ?> holder : HOLDERS)
-                    if (!player.getCapability(holder.capability).isPresent())
-                        event.addCapability(holder.id, holder.constructor.apply(player));
-        }
+        if (event.getObject() instanceof PlayerEntity player)
+            for (CapabilityHolder<?, ?> holder : HOLDERS)
+                if (!player.getCapability(holder.capability).isPresent())
+                    event.addCapability(holder.id, holder.constructor.apply(player));
     }
 
     @SubscribeEvent
