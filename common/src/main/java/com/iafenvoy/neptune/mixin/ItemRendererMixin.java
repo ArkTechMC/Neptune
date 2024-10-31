@@ -38,7 +38,8 @@ public class ItemRendererMixin {
     @Redirect(method = "renderItem(Lnet/minecraft/item/ItemStack;Lnet/minecraft/client/render/model/json/ModelTransformationMode;ZLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;IILnet/minecraft/client/render/model/BakedModel;)V",
             at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/item/ItemRenderer;getDirectItemGlintConsumer(Lnet/minecraft/client/render/VertexConsumerProvider;Lnet/minecraft/client/render/RenderLayer;ZZ)Lnet/minecraft/client/render/VertexConsumer;"))
     private VertexConsumer onGetDirectItemGlintConsumer(VertexConsumerProvider provider, RenderLayer layer, boolean solid, boolean glint) {
-        if ((neptune$mode == ModelTransformationMode.GUI || neptune$mode.isFirstPerson()) && Platform.isModLoaded("iris"))
+        //TODO: Fix glint conflict with shader loaders
+        if ((neptune$mode == ModelTransformationMode.GUI || neptune$mode.isFirstPerson()) && (Platform.isModLoaded("iris") || Platform.isModLoaded("oculus")))
             return ItemRenderer.getItemGlintConsumer(provider, layer, solid, glint);
         return GlintLayerManager.process(provider, layer, glint, neptune$temp);
     }
