@@ -1,5 +1,7 @@
 package com.iafenvoy.neptune.render;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.boss.BossBar;
@@ -8,6 +10,7 @@ import net.minecraft.util.Identifier;
 
 import java.util.*;
 
+@Environment(EnvType.CLIENT)
 public class BossBarRenderHelper {
     private static final Identifier BARS_TEXTURE = new Identifier("textures/gui/bars.png");
     private static final Map<Class<? extends Entity>, BossBarInfo> infos = new HashMap<>();

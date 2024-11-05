@@ -1,6 +1,8 @@
 package com.iafenvoy.neptune.mixin;
 
 import com.iafenvoy.neptune.event.EntityEvents;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.entity.Entity;
 import net.minecraft.registry.DynamicRegistryManager;
@@ -17,6 +19,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.function.Supplier;
 
+@Environment(EnvType.CLIENT)
 @Mixin(ClientWorld.class)
 public abstract class ClientWorldMixin extends World {
     protected ClientWorldMixin(MutableWorldProperties writableLevelData, RegistryKey<World> levelResourceKey, DynamicRegistryManager registryAccess, RegistryEntry<DimensionType> dimensionTypeHolder, Supplier<Profiler> filler, boolean b1, boolean b2, long seed, int i) {

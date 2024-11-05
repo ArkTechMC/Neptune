@@ -1,5 +1,7 @@
 package com.iafenvoy.neptune.render.armor;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexConsumer;
@@ -16,6 +18,7 @@ import net.minecraft.util.Identifier;
 import java.util.Arrays;
 import java.util.HashMap;
 
+@Environment(EnvType.CLIENT)
 public interface IArmorRendererBase<T extends LivingEntity> {
     HashMap<ItemConvertible, IArmorRendererBase<? extends LivingEntity>> RENDERERS = new HashMap<>();
 

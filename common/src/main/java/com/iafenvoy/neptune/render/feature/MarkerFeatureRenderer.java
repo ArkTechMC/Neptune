@@ -1,6 +1,8 @@
 package com.iafenvoy.neptune.render.feature;
 
 import com.iafenvoy.neptune.render.EntityWithMarkerTextureProvider;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexConsumerProvider;
@@ -14,6 +16,7 @@ import net.minecraft.util.Identifier;
 
 import java.util.Optional;
 
+@Environment(EnvType.CLIENT)
 public class MarkerFeatureRenderer<T extends MobEntity & EntityWithMarkerTextureProvider> extends FeatureRenderer<T, PlayerEntityModel<T>> {
     private final boolean glint;
 

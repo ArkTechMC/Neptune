@@ -1,6 +1,8 @@
 package com.iafenvoy.neptune.mixin;
 
 import com.iafenvoy.neptune.render.SkullRenderRegistry;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.block.AbstractSkullBlock;
 import net.minecraft.block.SkullBlock;
 import net.minecraft.client.render.VertexConsumerProvider;
@@ -15,6 +17,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+@Environment(EnvType.CLIENT)
 @Mixin(HeadFeatureRenderer.class)
 public class HeadFeatureRendererMixin<T extends LivingEntity> {
     @Inject(method = "render(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;ILnet/minecraft/entity/LivingEntity;FFFFFF)V", at = @At("HEAD"), cancellable = true)

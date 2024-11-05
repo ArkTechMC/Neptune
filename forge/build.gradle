@@ -27,6 +27,9 @@ dependencies {
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionForge")) { transitive = false }
 
+    implementation(annotationProcessor("io.github.llamalad7:mixinextras-common:0.2.0"))
+    implementation(include("io.github.llamalad7:mixinextras-forge:0.2.0"))
+
     modImplementation(include("com.iafenvoy.sponsor:sponsor_core:1.0.0-forge"))
 
     // Curios

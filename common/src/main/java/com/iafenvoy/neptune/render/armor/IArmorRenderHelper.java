@@ -1,5 +1,7 @@
 package com.iafenvoy.neptune.render.armor;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.model.Model;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
 import net.minecraft.client.render.OverlayTexture;
@@ -13,6 +15,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.RotationAxis;
 
+@Environment(EnvType.CLIENT)
 public interface IArmorRenderHelper {
     // From net.fabricmc.fabric.api.client.rendering.v1.ArmorRenderer
 

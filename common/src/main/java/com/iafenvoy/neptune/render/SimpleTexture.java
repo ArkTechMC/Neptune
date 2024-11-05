@@ -1,10 +1,13 @@
 package com.iafenvoy.neptune.render;
 
 import com.mojang.blaze3d.platform.TextureUtil;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.texture.AbstractTexture;
 import net.minecraft.client.texture.NativeImage;
 import net.minecraft.resource.ResourceManager;
 
+@Environment(EnvType.CLIENT)
 public class SimpleTexture extends AbstractTexture {
     private final NativeImage nativeImage;
 

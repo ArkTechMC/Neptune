@@ -15,8 +15,7 @@ import java.util.SortedMap;
 public class GlintLayerManager {
     private static final Map<GlintManager.GlintHolder, RenderLayer> LAYERS = new HashMap<>();
 
-    @ApiStatus.Internal
-    public static void registerAll(SortedMap<RenderLayer, BufferBuilder> map) {
+    static {
         for (GlintManager.GlintHolder holder : GlintManager.HOLDERS) {
             if (holder.texture() == null) continue;
             RenderLayer layer = RenderLayer.of("glint_" + holder.id(),
@@ -31,26 +30,31 @@ public class GlintLayerManager {
                             .transparency(RenderPhase.GLINT_TRANSPARENCY)
                             .texturing(RenderPhase.GLINT_TEXTURING)
                             .build(false));
-            map.put(layer, new BufferBuilder(layer.getExpectedBufferSize()));
             LAYERS.put(holder, layer);
         }
     }
 
-    public static VertexConsumer process(VertexConsumerProvider provider, RenderLayer layer, boolean glint, ItemStack stack){
+    @ApiStatus.Internal
+    public static void registerAll(SortedMap<RenderLayer, BufferBuilder> map) {
+        for (Map.Entry<GlintManager.GlintHolder, RenderLayer> entry : LAYERS.entrySet())
+            if (!map.containsKey(entry.getValue()))
+                map.put(entry.getValue(), new BufferBuilder(entry.getValue().getExpectedBufferSize()));
+    }
+
+    public static boolean shouldAlwaysGlint(ItemStack stack) {
+        return !stack.isEmpty() &&
+                stack.getNbt() != null &&
+                stack.getNbt().contains(GlintManager.GLINT_KEY, NbtElement.STRING_TYPE) &&
+                GlintManager.BY_ID.containsKey(stack.getOrCreateNbt().getString(GlintManager.GLINT_KEY)) &&
+                stack.getNbt().getBoolean(GlintManager.GLINT_ALWAYS_KEY);
+    }
+
+    public static RenderLayer process(RenderLayer origin, ItemStack stack) {
         if (!stack.isEmpty() && stack.getNbt() != null && stack.getNbt().contains(GlintManager.GLINT_KEY, NbtElement.STRING_TYPE)) {
             String id = stack.getOrCreateNbt().getString(GlintManager.GLINT_KEY);
-            if (glint || stack.getNbt().getBoolean(GlintManager.GLINT_ALWAYS_KEY))
-                return VertexConsumers.union(
-                        provider.getBuffer(
-                                LAYERS.getOrDefault(
-                                        GlintManager.BY_ID.getOrDefault(id, GlintManager.DEFAULT),
-                                        RenderLayer.getDirectGlint())
-                        ), provider.getBuffer(layer)
-                );
-            else return provider.getBuffer(layer);
+            if (stack.getNbt().getBoolean(GlintManager.GLINT_ALWAYS_KEY))
+                return LAYERS.getOrDefault(GlintManager.BY_ID.getOrDefault(id, GlintManager.DEFAULT), RenderLayer.getDirectGlint());
         }
-        if (glint)
-            return VertexConsumers.union(provider.getBuffer(RenderLayer.getDirectGlint()), provider.getBuffer(layer));
-        return provider.getBuffer(layer);
+        return origin;
     }
 }
