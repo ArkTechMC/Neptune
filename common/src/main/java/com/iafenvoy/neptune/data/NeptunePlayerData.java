@@ -11,9 +11,6 @@ public class NeptunePlayerData {
     private final Runnable sync;
     private Fraction fraction;
     private boolean abilityEnabled;
-    @Nullable
-    @Deprecated
-    private Identifier usingTexture = null;
 
     public NeptunePlayerData(Runnable sync) {
         this.sync = sync;
@@ -24,13 +21,11 @@ public class NeptunePlayerData {
     public void encode(NbtCompound tag) {
         tag.putString("fraction", this.fraction.id().toString());
         tag.putBoolean("abilityEnabled", this.abilityEnabled);
-        if (this.usingTexture != null) tag.putString("usingTexture", this.usingTexture.toString());
     }
 
     public void decode(NbtCompound tag) {
         this.fraction = Fraction.getById(tag.getString("fraction"));
         this.abilityEnabled = tag.getBoolean("abilityEnabled");
-        this.usingTexture = tag.contains("usingTexture") ? new Identifier(tag.getString("usingTexture")) : null;
     }
 
     public Fraction getFraction() {

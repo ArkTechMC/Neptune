@@ -3,7 +3,6 @@ package com.iafenvoy.neptune.forge.component;
 import com.iafenvoy.neptune.data.NeptunePlayerData;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraftforge.common.capabilities.AutoRegisterCapability;
-import net.minecraftforge.common.util.INBTSerializable;
 
 @AutoRegisterCapability
 public class NeptunePlayerDataStorage implements ITickableCapability {

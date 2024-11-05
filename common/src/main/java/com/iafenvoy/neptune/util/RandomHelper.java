@@ -26,7 +26,11 @@ public class RandomHelper {
     }
 
     public static double rangeRand(double origin, double range) {
-        return origin + nextDouble(-range, range);
+        return origin + rangeRand(range);
+    }
+
+    public static double rangeRand(double range) {
+        return nextDouble(-range, range);
     }
 
     public static <T> T randomOne(Random random, List<T> list) {

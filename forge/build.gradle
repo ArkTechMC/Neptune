@@ -22,17 +22,15 @@ configurations {
 dependencies {
     forge "net.minecraftforge:forge:${rootProject.forge_version}"
     // Remove the next line if you don't want to depend on the API
-    modApi "dev.architectury:architectury-forge:${rootProject.architectury_version}"
+    modApi(include("dev.architectury:architectury-forge:${rootProject.architectury_version}"))
 
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionForge")) { transitive = false }
 
     modImplementation(include("com.iafenvoy.sponsor:sponsor_core:1.0.0-forge"))
 
-    modApi "maven.modrinth:jupiter:PNEzF8F8"
-
     // Curios
-    modApi "top.theillusivec4.curios:curios-forge:${curios_version}"
+    modApi(include("top.theillusivec4.curios:curios-forge:${curios_version}"))
 
     // Optional
     // EMI

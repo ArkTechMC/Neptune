@@ -19,7 +19,7 @@ dependencies {
     modImplementation "net.fabricmc:fabric-loader:${rootProject.fabric_loader_version}"
     modApi "net.fabricmc.fabric-api:fabric-api:${rootProject.fabric_api_version}"
     // Remove the next line if you don't want to depend on the API
-    modApi "dev.architectury:architectury-fabric:${rootProject.architectury_version}"
+    modApi(include("dev.architectury:architectury-fabric:${rootProject.architectury_version}"))
 
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionFabric")) { transitive false }
@@ -29,10 +29,8 @@ dependencies {
     modImplementation(include("io.github.fabricators_of_create.Porting-Lib:obj_loader:2.3.4+1.20.1"))
     modImplementation(include("com.iafenvoy.sponsor:sponsor_core:1.0.0-fabric"))
 
-    modApi "maven.modrinth:jupiter:MtP3aqMB"
-
     // Trinkets
-    modApi "dev.emi:trinkets:${trinkets_version}"
+    modApi(include("dev.emi:trinkets:${trinkets_version}"))
 
     // Optional
     // EMI
